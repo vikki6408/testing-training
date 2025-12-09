@@ -75,14 +75,23 @@ module.exports = class CartItem {
 
     #validateArticleId(articleId) {
         //TODO Implement this method
+        if (!Number.isInteger(articleId) || articleId <= 0) {
+            throw new InvalidArticleIdException("Article ID must be a positive integer.");
+        }
     }
 
     #validateQuantity(quantity) {
         //TODO Implement this method
+        if (!Number.isInteger(quantity) || quantity < 1) {
+            throw new InvalidQuantityException("Quantity must be an integer greater than or equal to 1.");
+        }
     }
 
     #validatePrice(price) {
         //TODO Implement this method
+        if (typeof price !== 'number' || price < 10) {
+            throw new InvalidPriceException("Price must be a number greater than or equal to 10.");
+        }
     }
     //endregion private methods
 }
